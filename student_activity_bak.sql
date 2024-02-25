@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db403-mysql
--- Generation Time: Feb 25, 2024 at 10:49 AM
+-- Generation Time: Feb 25, 2024 at 12:03 PM
 -- Server version: 8.3.0
 -- PHP Version: 8.2.16
 
@@ -119,8 +119,15 @@ CREATE TABLE `staff` (
   `fullname` varchar(255) NOT NULL,
   `email` varchar(128) NOT NULL,
   `pic` varchar(128) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL
+  `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Dumping data for table `staff`
+--
+
+INSERT INTO `staff` (`id`, `fullname`, `email`, `pic`, `password`) VALUES
+('000001', 'มงคล สมรส', 'devil.t605@gmail.com', NULL, '$2y$10$tbGLLTpMUUIJ0vwwHt3fB.vvVTTNjz1AQf0bGnml2CNfvPy/Y/gSi');
 
 -- --------------------------------------------------------
 
