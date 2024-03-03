@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db403-mysql
--- Generation Time: Feb 25, 2024 at 12:03 PM
+-- Generation Time: Mar 03, 2024 at 10:43 AM
 -- Server version: 8.3.0
 -- PHP Version: 8.2.16
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `student_activity`
 --
+CREATE DATABASE IF NOT EXISTS `student_activity` DEFAULT CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci;
+USE `student_activity`;
 
 -- --------------------------------------------------------
 
@@ -40,6 +42,15 @@ CREATE TABLE `activities` (
   `edited_on` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
+--
+-- Dumping data for table `activities`
+--
+
+INSERT INTO `activities` (`id`, `name`, `semester`, `edu_year`, `cat_id`, `start`, `end`, `seats`, `edited_by`, `edited_on`) VALUES
+(22, 'ลอยกระทง', 2, 2567, 'CL', '2024-11-27 17:00:00', '2024-11-27 22:00:00', 60, '000001', '2024-03-03 04:12:13'),
+(23, 'แข่งขันลงทุน', 2, 2567, 'ED', '2024-04-01 09:00:00', '2024-04-01 16:00:00', 40, '000001', '2024-03-03 04:12:13'),
+(24, 'ค่ายอาสา', 2, 2567, 'LS', '2024-06-10 09:00:00', '2024-06-13 17:00:00', 20, '000001', '2024-03-03 04:12:13');
+
 -- --------------------------------------------------------
 
 --
@@ -50,6 +61,16 @@ CREATE TABLE `categories` (
   `id` char(2) NOT NULL,
   `name` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`id`, `name`) VALUES
+('CL', 'ศิลปะและวัฒนธรรม'),
+('ED', 'วิชาการ'),
+('EN', 'สันทนาการ'),
+('LS', 'ไลฟ์สไตล์');
 
 -- --------------------------------------------------------
 
@@ -83,8 +104,8 @@ CREATE TABLE `enrollments` (
   `act_id` int NOT NULL,
   `enroll_on` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `status` tinyint(1) DEFAULT '0',
-  `approved_by` char(6) NOT NULL,
-  `approved_on` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+  `approved_by` char(6) DEFAULT NULL,
+  `approved_on` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
@@ -214,7 +235,7 @@ ALTER TABLE `students`
 -- AUTO_INCREMENT for table `activities`
 --
 ALTER TABLE `activities`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `faculties`
